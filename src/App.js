@@ -19,7 +19,7 @@ function App() {
     );
 
     const handleSearchText = event => {
-      console.log(event.target.value);
+      // console.log(event.target.value);
       setSearchText(event.target.value);
     };
 
@@ -27,7 +27,7 @@ function App() {
       console.log(event);
       if (SearchText) {
         const key = "bde60eb3d70191bf80d726a2da4ae238";
-        let query = SearchText;
+        const query = SearchText;
         Axios.get(
           `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${query}&page=1&include_adult=false`
         ).then(res => {
@@ -40,10 +40,18 @@ function App() {
     };
 
     const MoviesDisplayed = () => {
-      console.log({ Movies });
-      let MoviesList = { Movies };
-      console.log(MoviesList);
-      return MoviesList.Movies.results[0].title;
+      // console.log({ Movies });
+      const MoviesListUnformated = { Movies };
+      // console.log(MoviesListUnformated);
+      // console.log(MoviesListUnformated.Movies.results);
+      const MoviesListUnformated2 = MoviesListUnformated.Movies.results;
+      let MoviesListFormated = MoviesListUnformated2.map(MovieUnformated => {
+        // console.log(MovieUnformated.title);
+        return <li>{MovieUnformated.title}</li>;
+      });
+      // console.log(MoviesListFormated);
+      return <ul>{MoviesListFormated}</ul>;
+      // return MoviesListUnformated.Movies.results[0].title;
     };
 
     return (
