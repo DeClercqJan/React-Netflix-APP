@@ -1,5 +1,6 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import Axios from "axios";
+import Card from "../src/components/Card";
 // import "./App.css";
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
     const inititalMovies = {
       results: [
         {
-          title: "test1"
+          id: 0,
+          title: "Movie1"
         }
       ]
     };
@@ -24,7 +26,7 @@ function App() {
     };
 
     const handleMovieSearch = event => {
-      console.log(event);
+      // console.log(event);
       if (SearchText) {
         const key = "bde60eb3d70191bf80d726a2da4ae238";
         const query = SearchText;
@@ -39,45 +41,56 @@ function App() {
       event.preventDefault();
     };
 
+    // suggested that I use this, but for what?
+    useEffect(() => {
+      console.log("use effect fires");
+    });
+
     const MoviesDisplayed = () => {
       // console.log({ Movies });
-      const MoviesListUnformated = { Movies };
-      // console.log(MoviesListUnformated);
-      // console.log(MoviesListUnformated.Movies.results);
-      const MoviesListUnformated2 = MoviesListUnformated.Movies.results;
-      let MoviesListFormated = MoviesListUnformated2.map(MovieUnformated => {
-        // console.log(MovieUnformated.title);
-        return <li>{MovieUnformated.title}</li>;
+      const moviesListUnformated = { Movies };
+      // console.log(moviesListUnformated);
+      // console.log(moviesListUnformated.Movies.results);
+      const moviesListUnformated2 = moviesListUnformated.Movies.results;
+      // console.log(moviesListUnformated2);
+      const moviesListFormated = moviesListUnformated2.map(movieUnformated => {
+        // console.log(movieUnformated.title);
+        // console.log(movieUnformated);
+        return <Card movieData={movieUnformated} />;
       });
-      // console.log(MoviesListFormated);
-      return <ul>{MoviesListFormated}</ul>;
-      // return MoviesListUnformated.Movies.results[0].title;
+      // console.log(moviesListFormated);
+      return moviesListFormated;
+      // return moviesListUnformated.Movies.results[0].title;
     };
 
     return (
       <Fragment>
-        <div>
+        <header>
+          <h1>React Netflix App</h1>
           {/* <p>You clicked {Movies[0]} times</p> */}
           {/* function for form needs to on form element */}
-          <form onSubmit={handleMovieSearch}>
-            <input
-              type="search"
-              value={SearchText}
-              onChange={handleSearchText}
-            ></input>
-            <button type="submit">Click Me</button>
-          </form>
-        </div>
-        <div>
+          <nav>
+            <form onSubmit={handleMovieSearch}>
+              <input
+                type="search"
+                value={SearchText}
+                onChange={handleSearchText}
+              ></input>
+              <button type="submit">Click Me</button>
+            </form>
+          </nav>
+        </header>
+        <main>
+          <h2>Movies</h2>
           <MoviesDisplayed />
-        </div>
+        </main>
+        <footer></footer>
       </Fragment>
     );
   }
 
   return (
     <div>
-      <p>test</p>
       <GetMovies />
     </div>
   );
