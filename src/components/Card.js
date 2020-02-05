@@ -1,13 +1,11 @@
 import React from "react";
 
 function Card(props) {
-  const movieData = props.movieData;
-  console.log(movieData);
-  console.log(movieData.title);
+  const movieDataLower = props.movieDataLower;
   return (
     <article>
-      <h3 key={movieData.id}>{movieData.title}</h3>
-      <p>{movieData.overview}</p>
+      <h3 key={movieDataLower.id}>{movieDataLower.title}</h3>
+      <p>{movieDataLower.overview}</p>
     </article>
   );
 }

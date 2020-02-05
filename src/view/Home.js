@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import SearchBar from "../components/Search";
 import Results from "../view/Results";
@@ -8,6 +8,14 @@ import Results from "../view/Results";
 
 // note: need to write this with starting capital letter (at the very least if you want to use it as a component)
 function Home() {
+  const [SearchTextHigher, setSearchTextHigher] = useState(
+    "enter keywords to find movies higher"
+  );
+
+  const handleSearchTextHigher = event => {
+    setSearchTextHigher(event.target.value);
+  };
+
   const inititalMovies = {
     results: [
       {
@@ -17,20 +25,9 @@ function Home() {
     ]
   };
 
-  const [test, setTest] = useState("test pushing data up using hooks");
-  const [SearchTextHigher, setSearchTextHigher] = useState(
-    "enter keywords to find movies higher"
-  );
-  const [Movies, setMovies] = useState(inititalMovies);
-
-  const handleSearchTextHigher = event => {
-    console.log(event);
-    // console.log(event.target.value);
-    setSearchTextHigher(event.target.value);
-  };
+  const [MoviesHigher, setMoviesHigher] = useState(inititalMovies);
 
   const handleMovieSearchHigher = event => {
-    // console.log(event);
     if (SearchTextHigher) {
       const key = "bde60eb3d70191bf80d726a2da4ae238";
       const query = SearchTextHigher;
@@ -38,25 +35,24 @@ function Home() {
         `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${query}&page=1&include_adult=false`
       ).then(res => {
         const movies = res.data;
-        setMovies(movies);
+        setMoviesHigher(movies);
       });
     }
     setSearchTextHigher("");
     event.preventDefault();
   };
 
-  //   const onChangeTestHigher = dinges => {
-  //     setTest(dinges);
-  //   };
+  // suggested that I use this, but for what? Couple of ideas: new api-request with every letter typed in search (probably a bad idea)
+  useEffect(() => {
+    console.log("use effect fires");
+  });
 
   return (
     <div>
       <header>
         <h1>React Netflix App</h1>
-        {/* <p>You clicked {Movies[0]} times</p> */}
-        {/* function for form needs to on form element */}
         <SearchBar
-          Movies={Movies}
+          // confusing names? Well, I thought it made most sense to have props.lower as a name for something that is used at that level, while props.functionHigher is something that is moved up
           SearchTextLower={SearchTextHigher}
           handleSearchTextHigher={handleSearchTextHigher}
           handleMovieSearchHigher={handleMovieSearchHigher}
@@ -64,8 +60,7 @@ function Home() {
       </header>
       <main>
         <h2>Movies</h2>
-        {/* <Results test={test} onChangeTestLower={onChangeTestHigher} /> */}
-        <Results Movies={Movies} />
+        <Results MoviesLower={MoviesHigher} />
       </main>
       <footer>
         <p>footer</p>
