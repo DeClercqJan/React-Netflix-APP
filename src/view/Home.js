@@ -48,9 +48,9 @@ function Home() {
   });
 
   return (
-    <div>
-      <header>
-        <h1>React Netflix App</h1>
+    <div className="container-fluid">
+      <header className="row">
+        <h1 className="w-100">React Netflix App</h1>
         <SearchBar
           // confusing names? Well, I thought it made most sense to have props.lower as a name for something that is used at that level, while props.functionHigher is something that is moved up
           SearchTextLower={SearchTextHigher}
@@ -58,8 +58,8 @@ function Home() {
           handleMovieSearchHigher={handleMovieSearchHigher}
         />
       </header>
-      <main>
-        <h2>Movies</h2>
+      <main className="row">
+        <h2 className="w-100">Movies</h2>
         <Results MoviesLower={MoviesHigher} />
       </main>
       <footer>

@@ -17,7 +17,7 @@ function SearchBar(props) {
   };
 
   return (
-    <nav>
+    <nav className="w-100 navbar bg-dark">
       {/* function for form needs to on form element */}
       <form onSubmit={handleMovieSearchLower}>
         <input
@@ -25,7 +25,9 @@ function SearchBar(props) {
           value={SearchTextLower}
           onChange={handleSearchTextLower}
         ></input>
-        <button type="submit">Click Me</button>
+        <button className="btn btn-info" type="submit">
+          Click Me
+        </button>
       </form>
     </nav>
   );
