@@ -1,57 +1,19 @@
-import React, { useState, useEffect } from "react";
-import Axios from "axios";
+import React, { useEffect } from "react";
 import Card from "../components/Card";
 
-function SearchBar() {
-  const inititalMovies = {
-    results: [
-      {
-        id: 0,
-        title: "Movie1"
-      }
-    ]
-  };
+function SearchBar(props) {
+  // console.log(props);
+  const SearchTextLower = props.SearchTextLower;
+  // console.log(Movies2);
 
-  const [Movies, setMovies] = useState(inititalMovies);
-
-  const handleMovieSearch = event => {
-    // console.log(event);
-    if (SearchText) {
-      const key = "bde60eb3d70191bf80d726a2da4ae238";
-      const query = SearchText;
-      Axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${query}&page=1&include_adult=false`
-      ).then(res => {
-        const movies = res.data;
-        setMovies(movies);
-      });
-    }
-    setSearchText("");
-    event.preventDefault();
-  };
-
-  const [SearchText, setSearchText] = useState("enter keywords to find movies");
-
-  const handleSearchText = event => {
+  /*   const [SearchText, setSearchText] = useState(
+    "enter keywords to find movies lower"
+  );
+ */
+  const handleSearchTextLower = event => {
     // console.log(event.target.value);
-    setSearchText(event.target.value);
-  };
-
-  const MoviesDisplayed = () => {
-    // console.log({ Movies });
-    const moviesListUnformated = { Movies };
-    // console.log(moviesListUnformated);
-    // console.log(moviesListUnformated.Movies.results);
-    const moviesListUnformated2 = moviesListUnformated.Movies.results;
-    // console.log(moviesListUnformated2);
-    const moviesListFormated = moviesListUnformated2.map(movieUnformated => {
-      // console.log(movieUnformated.title);
-      // console.log(movieUnformated);
-      return <Card movieData={movieUnformated} />;
-    });
-    // console.log(moviesListFormated);
-    return moviesListFormated;
-    // return moviesListUnformated.Movies.results[0].title;
+    // setSearchText(event.target.value);
+    props.handleSearchTextHigher(event);
   };
 
   // suggested that I use this, but for what? Couple of ideas: new api-request with every letter typed in search (probably a bad idea)
@@ -59,16 +21,22 @@ function SearchBar() {
     console.log("use effect fires");
   });
 
+  const handleMovieSearchLower = event => {
+    console.log(event);
+    console.log(event.target.value);
+    props.handleMovieSearchHigher(event);
+    event.preventDefault();
+  };
+
   return (
     <nav>
-      <form onSubmit={handleMovieSearch}>
+      <form onSubmit={handleMovieSearchLower}>
         <input
           type="search"
-          value={SearchText}
-          onChange={handleSearchText}
+          value={SearchTextLower}
+          onChange={handleSearchTextLower}
         ></input>
         <button type="submit">Click Me</button>
-        <MoviesDisplayed />
       </form>
     </nav>
   );
