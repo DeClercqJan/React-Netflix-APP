@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import Card from "../components/Card";
 
-function searchBar() {
+function SearchBar() {
   const inititalMovies = {
     results: [
       {
@@ -74,4 +74,4 @@ function searchBar() {
   );
 }
 
-export default searchBar;
+export default SearchBar;
