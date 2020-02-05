@@ -14,7 +14,6 @@ function Card(props) {
           <img
             className="card-img-top"
             style={{"object-fit": "contain"}}
-
             src={`https://image.tmdb.org/t/p/w500${movieDataLower.poster_path}`}
             alt="Card image cap"
           />
