@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import Card from "../components/Card";
+import React from "react";
 
 function SearchBar(props) {
   // confusing names? Well, I thought it made most sense to have props.lower as a name for something that is used at that level, while props.functionHigher is something that is moved up

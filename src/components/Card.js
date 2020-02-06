@@ -1,4 +1,5 @@
 import React from "react";
+// import { BrowserRouter as Link } from "react-router-dom";
 
 function Card(props) {
   const movieDataLower = props.movieDataLower;
@@ -13,7 +14,7 @@ function Card(props) {
         <div style={{ height: "50%" }}>
           <img
             className="card-img-top"
-            style={{"object-fit": "contain"}}
+            style={{ "object-fit": "contain" }}
             src={`https://image.tmdb.org/t/p/w500${movieDataLower.poster_path}`}
             alt="Card image cap"
           />
@@ -28,6 +29,7 @@ function Card(props) {
           >
             {movieDataLower.overview}
           </p>
+          {/* <Link to={`/${movieDataLower.id}`}>Products</Link> */}
           <a
             href="#"
             className="btn btn-primary"
