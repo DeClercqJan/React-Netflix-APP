@@ -6,9 +6,9 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
-  // useRouteMatch,
-  // useParams
+  Link,
+  useRouteMatch,
+  useParams
 } from "react-router-dom";
 // import "./App.css";
 
@@ -56,8 +56,50 @@ function Home() {
   });
 
   function MovieDetails() {
-    console.log("movieDetails functies firet")
-    return (<p>testje Moviedetails</p>);
+    console.log("movieDetails functies firet");
+    const dummy = MoviesHigher.results[0].id;
+    console.log(dummy);
+    return dummy;
+    // return (<p>testje Moviedetails</p>);
+  }
+
+  function TestParameters() {
+    let match = useRouteMatch();
+  
+    return (
+      <div>
+        <h2>Topics</h2>
+  
+        <ul>
+          <li>
+            <Link to={`${match.url}/components`}>Components</Link>
+          </li>
+          <li>
+            <Link to={`${match.url}/props-v-state`}>
+              Props v. State
+            </Link>
+          </li>
+        </ul>
+  
+        {/* The Topics page has its own <Switch> with more routes
+            that build on the /topics URL path. You can think of the
+            2nd <Route> here as an "index" page for all topics, or
+            the page that is shown when no topic is selected */}
+        <Switch>
+          <Route path={`${match.path}/:topicId`}>
+            <Topic />
+          </Route>
+          <Route path={match.path}>
+            <h3>Please select a topic.</h3>
+          </Route>
+        </Switch>
+      </div>
+    );
+  }
+  
+  function Topic() {
+    let { topicId } = useParams();
+    return <h3>Requested topic ID: {topicId}</h3>;
   }
 
   return (
@@ -71,15 +113,27 @@ function Home() {
           handleMovieSearchHigher={handleMovieSearchHigher}
         />
         <Router>
-          <Link to="/movieDetails">Film Details</Link>
+          <Link to="/movieDetails">Movie details</Link>
+          <Link to="/moviesList">List of movies</Link>
+          <Link to="/testParameters">testParameters</Link>
           <Switch>
-            <Route path="/movieDetails"><MovieDetails/></Route>
+            <Route path="/movieDetails">
+              <MovieDetails />
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/moviesList">
+              <Results MoviesLower={MoviesHigher} />
+            </Route>
+            <Route path="/testParameters">
+              <TestParameters/>
+            </Route>
           </Switch>
         </Router>
       </header>
       <main className="row">
         <h2 className="w-100">Movies</h2>
-        <Results MoviesLower={MoviesHigher} />
+        {/* <Results MoviesLower={MoviesHigher} /> */}
       </main>
       <footer>
         <p>footer</p>
