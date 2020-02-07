@@ -1,3 +1,24 @@
+# react-netflix-app
+
+## basic idea
+- get popular movies on first-load. Get details of movie. Or search other movie and get details one step later
+- BeCode React JavaScript challenge 
+
+## implementation
+- hooks (useState, useEffect) instead of classes
+- react router, spread out over multiple components 
+- tried to have clean/readable code. Confusing names? Well, I thought it made most sense to have props.lower as a name for something that is used at that level, while props.functionHigher is something that is moved up
+- condtionally displayed certain blocks on the basis of parameters set in state
+- tried to have clean/readable code
+
+## to do's
+- embed trailer on details page from google. Probably will be method chaing (https://developers.themoviedb.org/3/movies/get-movie-videos and set as parameter in https://www.youtube.com/watch?v=UcmZN0Mbl04)
+- overhaul the whole thing to have a personalised film suggestion with the click of a few buttons based on how I feel (sad, romantic, party ...) and that I haven't seen before
+- stylez
+
+# ORIGINAL ASSIGNMENT BELOW
+
+
 # React Netflix APP
 
 ## Simple introduction to hooks

@@ -2,13 +2,8 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import SearchBar from "../components/Search";
 import Results from "../view/Results";
-import { BrowserRouter as Router, useRouteMatch } from "react-router-dom";
-// import "./App.css";
+import { BrowserRouter as Router } from "react-router-dom";
 
-// fundamental remark: this would be way cooler if I configured it to represent my own preferences and in a click of a button I get a recommendation for how I'm feeling that moment (love sad, wanting to party etc.). Also, should not have seen the before
-// maybe better instead of moviedetails: jeroen had good idea: get youtube key from https://developers.themoviedb.org/3/movies/get-movie-videos and set as parameter inhttps://www.youtube.com/watch?v=UcmZN0Mbl04 probably will be method changing
-
-// note: need to write this with starting capital letter (at the very least if you want to use it as a component)
 function Home() {
   const [SearchTextHigher, setSearchTextHigher] = useState(
     "enter keywords to find movies higher"
@@ -44,7 +39,7 @@ function Home() {
     event.preventDefault();
   };
 
-  // suggested that I use this, but for what? Couple of ideas: new api-request with every letter typed in search (probably a bad idea)
+  // suggested that I use this, but for what? Edit: at the moment it's handle to track re-renders
   useEffect(() => {
     console.log("use effect fires");
   });
@@ -65,7 +60,6 @@ function Home() {
       </header>
       <main className="row">
         <h2 className="w-100">Movies</h2>
-        {/* <Results MoviesLower={MoviesHigher} /> */}
       </main>
       <footer>
         <p>footer</p>

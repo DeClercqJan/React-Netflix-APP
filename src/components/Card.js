@@ -1,17 +1,7 @@
 import React from "react";
-import {
-  // BrowserRouter as Router,
-  // Switch,
-  // Route,
-  Link,
-  useRouteMatch
-  // useParams
-} from "react-router-dom";
-// import { BrowserRouter as Link } from "react-router-dom";
 
 function Card(props) {
   const movieDataLower = props.movieDataLower;
-  // console.log(movieDataLower);
   return (
     <article
       key={movieDataLower.id}
@@ -22,9 +12,9 @@ function Card(props) {
         <div style={{ height: "50%" }}>
           <img
             className="card-img-top"
-            style={{ "object-fit": "contain" }}
+            style={{ objectFit: "contain" }}
             src={`https://image.tmdb.org/t/p/w500${movieDataLower.poster_path}`}
-            alt="Card image cap"
+            alt={movieDataLower.title}
           />
         </div>
         <div className="card-body" style={{ height: "50%" }}>
@@ -37,7 +27,6 @@ function Card(props) {
           >
             {movieDataLower.overview}
           </p>
-          {/* <Link to={`/${movieDataLower.id}`}>Products</Link> */}
           <a
             href={`/${movieDataLower.id}`}
             className="btn btn-primary"

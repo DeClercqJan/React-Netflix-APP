@@ -1,5 +1,4 @@
 import React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
 
 function SearchBar(props) {
   // confusing names? Well, I thought it made most sense to have props.lower as a name for something that is used at that level, while props.functionHigher is something that is moved up
@@ -10,8 +9,6 @@ function SearchBar(props) {
   };
 
   const handleMovieSearchLower = event => {
-    console.log(event);
-    console.log(event.target.value);
     props.handleMovieSearchHigher(event);
     event.preventDefault();
   };
