@@ -2,14 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import SearchBar from "../components/Search";
 import Results from "../view/Results";
-import {
-  BrowserRouter as Router
-  //   Switch,
-  //   Route,
-  //   Link,
-  //   // useRouteMatch,
-  //   useParams
-} from "react-router-dom";
+import { BrowserRouter as Router, useRouteMatch } from "react-router-dom";
 // import "./App.css";
 
 // fundamental remark: this would be way cooler if I configured it to represent my own preferences and in a click of a button I get a recommendation for how I'm feeling that moment (love sad, wanting to party etc.). Also, should not have seen the before

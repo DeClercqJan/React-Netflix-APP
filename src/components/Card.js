@@ -1,9 +1,17 @@
 import React from "react";
+import {
+  // BrowserRouter as Router,
+  // Switch,
+  // Route,
+  Link,
+  useRouteMatch
+  // useParams
+} from "react-router-dom";
 // import { BrowserRouter as Link } from "react-router-dom";
 
 function Card(props) {
   const movieDataLower = props.movieDataLower;
-  console.log(movieDataLower);
+  // console.log(movieDataLower);
   return (
     <article
       key={movieDataLower.id}
@@ -31,7 +39,7 @@ function Card(props) {
           </p>
           {/* <Link to={`/${movieDataLower.id}`}>Products</Link> */}
           <a
-            href="#"
+            href={`/${movieDataLower.id}`}
             className="btn btn-primary"
             style={{ height: "15%", marginBottom: "15%" }}
           >
