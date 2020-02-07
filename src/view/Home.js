@@ -3,12 +3,12 @@ import Axios from "axios";
 import SearchBar from "../components/Search";
 import Results from "../view/Results";
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  // useRouteMatch,
-  useParams
+  BrowserRouter as Router
+  //   Switch,
+  //   Route,
+  //   Link,
+  //   // useRouteMatch,
+  //   useParams
 } from "react-router-dom";
 // import "./App.css";
 
@@ -67,13 +67,7 @@ function Home() {
           handleMovieSearchHigher={handleMovieSearchHigher}
         />
         <Router>
-          <Link to="/testParameters">testParameters</Link>
-          <Switch>
-            <Route path="/testParameters">
-              {/* <TestParameters/> */}
-              <Results MoviesLower={MoviesHigher} />
-            </Route>
-          </Switch>
+          <Results MoviesLower={MoviesHigher} />
         </Router>
       </header>
       <main className="row">
