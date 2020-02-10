@@ -28,7 +28,7 @@ function Card(props) {
             {movieDataLower.overview}
           </p>
           <a
-            href={`/${movieDataLower.id}`}
+            href={`/movies/${movieDataLower.id}`}
             className="btn btn-primary"
             style={{ height: "15%", marginBottom: "15%" }}
           >

@@ -9,7 +9,25 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router";
 
 // A simple component that shows the pathname of the current location
-class ShowTheLocation extends React.Component {
+// class ShowTheLocation extends React.Component {
+//   static propTypes = {
+//     match: PropTypes.object.isRequired,
+//     location: PropTypes.object.isRequired,
+//     history: PropTypes.object.isRequired
+//   };
+
+//   render() {
+//     const { match, location, history } = this.props;
+
+//     return <div>You are now at {location.pathname}</div>;
+//   }
+// }
+
+// Create a new component that is "connected" (to borrow redux
+// terminology) to the router.
+// const ShowTheLocationWithRouter = withRouter(ShowTheLocation);
+
+class App extends React.Component {
   static propTypes = {
     match: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
@@ -17,17 +35,27 @@ class ShowTheLocation extends React.Component {
   };
 
   render() {
-    const { match, location, history } = this.props;
+    const handleUrlChangeOnSearch = props => {
+      console.log("url change in App fires");
+      this.props.history.push('/movies');
+    };
 
-    return <div>You are now at {location.pathname}</div>;
+    const { match, location, history } = this.props;
+    // return <Home/>
+    return (
+      <Home
+        handleUrlChangeOnSearch={handleUrlChangeOnSearch}
+        propsForURL={({ match }, { location }, { history })}
+      />
+    );
   }
 }
 
-// Create a new component that is "connected" (to borrow redux
-// terminology) to the router.
-const ShowTheLocationWithRouter = withRouter(ShowTheLocation);
+const AppWithRouter = withRouter(App);
 
-function Home() {
+export default AppWithRouter;
+
+function Home(props) {
   const [SearchTextHigher, setSearchTextHigher] = useState(
     "enter keywords to find movies higher"
   );
@@ -62,12 +90,17 @@ function Home() {
     event.preventDefault();
   };
 
-  const handleMovieSearchHigherWithRouter = withRouter(handleMovieSearchHigher);
-
   // suggested that I use this, but for what? Edit: at the moment it's handle to track re-renders
   useEffect(() => {
     console.log("use effect fires");
   });
+
+  const handleUrlChangeOnSearch2 = event => {
+    console.log("url change in home fires");
+    // console.log(event);
+    props.handleUrlChangeOnSearch();
+    // return "test";
+  };
 
   return (
     <div className="container-fluid">
@@ -78,15 +111,18 @@ function Home() {
           SearchTextLower={SearchTextHigher}
           handleSearchTextHigher={handleSearchTextHigher}
           handleMovieSearchHigher={handleMovieSearchHigher}
+          handleUrlChangeOnSearch2={handleUrlChangeOnSearch2}
         />
-        <Router>
-          <ShowTheLocationWithRouter />
-        </Router>
+        {/* <Router>
+            <ShowTheLocationWithRouter />
+          </Router> */}
       </header>
       <main className="row">
         <h2 className="w-100">Movies</h2>
         <Router>
-          <Results MoviesLower={MoviesHigher} />
+          <Results
+            MoviesLower={MoviesHigher}
+          />
         </Router>
       </main>
       <footer>
@@ -96,4 +132,4 @@ function Home() {
   );
 }
 
-export default Home;
+// export default Home;

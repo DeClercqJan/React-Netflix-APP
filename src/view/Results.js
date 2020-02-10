@@ -5,7 +5,7 @@ import {
   Switch,
   Route,
   Link,
-  useRouteMatch,
+  // useRouteMatch,
   useParams
 } from "react-router-dom";
 import Axios from "axios";
@@ -29,7 +29,7 @@ const MovieDetails = () => {
 };
 
 function Results(props) {
-  let match = useRouteMatch();
+  // let match = useRouteMatch();
 
   const MoviesLower = props.MoviesLower;
   const moviesListUnformated = MoviesLower.results;
@@ -37,9 +37,9 @@ function Results(props) {
     return (
       <Fragment>
         <Router>
-        <Card movieDataLower={movieDataHigher} />
+          <Card movieDataLower={movieDataHigher} />
         </Router>
-        <Link to={`${match.url}${movieDataHigher.id}`}>
+        <Link to={`/movies/${movieDataHigher.id}`}>
           {movieDataHigher.id}
         </Link>
       </Fragment>
@@ -49,11 +49,11 @@ function Results(props) {
   return (
     <Router>
       <Switch>
-      {/* <Route exact path={`${match.path}/search`}> */}
-        <Route exact path={match.path}>
+        {/* <Route exact path={`${match.path}/search`}> */}
+        <Route exact path={`/movies`}>
           {moviesListFormated}
         </Route>
-        <Route path={`${match.path}:movieID`}>
+        <Route path={`/movies/:movieID`}>
           <MovieDetails />
         </Route>
       </Switch>
