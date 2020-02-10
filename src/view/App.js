@@ -8,6 +8,9 @@ import SearchBar from "../components/Search";
 import MoviesList from "../components/Results";
 
 class App extends Component {
+  componentDidMount() {
+    
+  }
   render() {
     return (
       <div className="container-fluid">
