@@ -19,7 +19,8 @@ function SearchBar() {
     if (searchText) {
       history.push({
         pathname: "/searchresultspage",
-        search: `?query=${searchText}`,
+        // search: `?query=${searchText}`,
+        search: searchText,
         state:
           "just putting something here to illustrate that this can also be done and much more"
       });

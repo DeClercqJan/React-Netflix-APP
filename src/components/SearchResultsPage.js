@@ -1,17 +1,59 @@
-import React, { useState } from "react";
-import ApiData from "../API";
-import { useLocation, useHistory } from "react-router-dom";
+import React, { useState, useEffect, Fragment } from "react";
+// import ApiData from "../API";
+// import { useLocation, useHistory } from "react-router-dom";
+import Axios from "axios";
 
 function SearchResultsPage(props) {
   // console.log(props);
-  console.log(props.location);
+  // console.log(props.location);
+  // console.log(props.location.search);
+  const searchTextRaw = props.location.search;
+  const searchTextCleaned = searchTextRaw.substring(1);
+  console.log(searchTextCleaned);
   // console.log(ApiData);
   // console.log(useLocation);
   // console.log(useHistory);
 
-  const [searchResults, setSearchResults] = useState([]);
+  const searchText2 = searchTextCleaned;
+  // const [searchText2, setSearchText2] = useState("");
+  const [searchResults, setSearchResults] = useState(null);
+  console.log(searchResults);
 
-  return <p>retrun van Searchresultspages</p>;
+  if (searchText2 !== "") {
+    const key = "bde60eb3d70191bf80d726a2da4ae238";
+    const query = searchText2;
+    const FetchData = () => {
+      Axios.get(
+        `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${query}&page=1&include_adult=false`
+      ).then(res => {
+        const moviesSearched = res.data;
+        //console.log(moviesSearched.results[0].title);
+        setSearchResults(moviesSearched);
+      });
+    };
+    useEffect(() => {
+      FetchData();
+      // this [] is important to prevent infinit loops
+    }, []);
+  }
+  // event.preventDefault();
+
+  return (
+    <Fragment>
+      <p>{searchText2}</p>
+      {searchResults ? (
+        <p>{`de titel van de eerste film is ${searchResults.results[0].title}`}</p>
+      ) : (
+        "je moet eerst searchen"
+      )}
+    </Fragment>
+  );
+
+  // const [searchText, setSearchText] = useState("");
+
+  // const handleSearchText = event => {
+  //   setSearchText(event.target.value);
+  // };
 
   // export default class SearchResultsPage extends React.Component {
   // state = {
