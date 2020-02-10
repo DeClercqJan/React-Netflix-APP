@@ -17,7 +17,12 @@ function SearchBar() {
 
   const handleSearchSubmit = () => {
     if (searchText) {
-      history.push("/hallo");
+      history.push({
+        pathname: "/searchresultspage",
+        search: `?query=${searchText}`,
+        state:
+          "just putting something here to illustrate that this can also be done and much more"
+      });
     } else {
       alert("Please enter some search text!");
     }

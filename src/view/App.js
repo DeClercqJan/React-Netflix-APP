@@ -26,7 +26,7 @@ import SearchResultsPage from "../components/SearchResultsPage";
 // }
 //  render() {
 
-function App() {
+function App(props) {
   // handleRoute = route => () => {
   //   this.props.history.push({ pathname: route });
   // };
@@ -86,6 +86,10 @@ function App() {
             />
             {/* <Route component={RouteNotFound} /> */}
             <Route path="/movies" component={MoviesList} />
+            <Route
+              path="/searchresultspage"
+              render={props => <SearchResultsPage {...props} />}
+            />
           </Switch>
         </BrowserRouter>
       </header>
