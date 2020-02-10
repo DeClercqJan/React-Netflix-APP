@@ -49,6 +49,7 @@ function Results(props) {
   return (
     <Router>
       <Switch>
+      {/* <Route exact path={`${match.path}/search`}> */}
         <Route exact path={match.path}>
           {moviesListFormated}
         </Route>
