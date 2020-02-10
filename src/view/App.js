@@ -5,7 +5,7 @@ import Home from "../components/Home";
 // import About from './components/About'
 // import Contact from './components/Contact'
 import SearchBar from "../components/Search";
-// import MoviesList from "../components/Results";
+import MoviesList from "../components/Results";
 // import Axios from "axios";
 import SearchResultsPage from "../components/SearchResultsPage";
 
@@ -77,9 +77,15 @@ function App() {
           <Route path="/movies" component={MoviesList} /> */}
           <SearchBar />
           <Switch>
-            <Route exact path="/" component={Home} location={location}/>
-            <Route exact path="/results" component={SearchResultsPage}             location={location}/>
+            <Route exact path="/" component={Home} location={location} />
+            <Route
+              exact
+              path="/results"
+              component={SearchResultsPage}
+              location={location}
+            />
             {/* <Route component={RouteNotFound} /> */}
+            <Route path="/movies" component={MoviesList} />
           </Switch>
         </BrowserRouter>
       </header>
