@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 // import Card from "../components/Card";
 // import {
 //   BrowserRouter as Router,
@@ -10,7 +10,6 @@ import React from "react";
 //   // withRouter
 // } from "react-router-dom";
 // import Axios from "axios";
-
 
 // function Results(props) {
 //   // let match = useRouteMatch();
@@ -34,7 +33,7 @@ import React from "react";
 //     return <p>{movieSelected.title}</p>;
 //   };
 
-const MoviesList = () => {
+function MoviesList() {
   //     const MoviesLower = props.MoviesLower;
   //     const moviesListUnformated = MoviesLower.results;
   //     const moviesListFormated = moviesListUnformated.map(movieDataHigher => {
@@ -49,7 +48,7 @@ const MoviesList = () => {
   //     });
   //     return moviesListFormated;
   return <p>MoviesList</p>;
-};
+}
 
 //   return (
 //     <Router>

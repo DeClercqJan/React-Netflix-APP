@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-// import Axios from "axios";
+import React from "react";
 // import SearchBar from "../components/Search";
 // import Results from "../view/Results";
 // import { BrowserRouter, Route } from "react-router-dom";

@@ -1,42 +1,105 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { Component, Fragment } from "react";
+//  import { Link } from "react-router-dom";
+// import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import { Form, FormControl, Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
-function SearchBar(props) {
-  console.log(props);
-  // confusing names? Well, I thought it made most sense to have props.lower as a name for something that is used at that level, while props.functionHigher is something that is moved up
-  // const SearchTextLower = props.SearchTextLower;
+//  function SearchBar(props) {
+// const searchText = props.searchText;
 
-  // const handleSearchTextLower = event => {
-  //   props.handleSearchTextHigher(event);
-  // };
+// const handleSearchText = event => {
+//   props.handleSearchText(event);
+// };
 
-  // const handleMovieSearchLower = event => {
-  //   props.handleMovieSearchHigher(event);
-  //   props.handleUrlChangeOnSearch2();
-  //   event.preventDefault();
-  // };
+// const handleMovieSearch = event => {
+//   props.handleMovieSearch(event);
+//   //   props.handleUrlChangeOnSearch2();
+//   event.preventDefault();
+//   this.props.history.push({
+//     pathname: "/movies"
+//     // state: {
+//     //   searchText: this.state.searchText
+//     // }
+//   });
+// };
+
+function HomeButton() {
+  let history = useHistory();
+  console.log(history);
+
+  function handleClick() {
+    history.push("/home");
+  }
 
   return (
-    // <nav className="w-100 navbar bg-dark">
-    //   {/* function for form needs to on form element */}
-    //   <form onSubmit={handleMovieSearchLower}>
-    //     <input
-    //       type="search"
-    //       value={SearchTextLower}
-    //       onChange={handleSearchTextLower}
-    //     ></input>
-    //     <button className="btn btn-info" type="submit">
-    //       Click Me
-    //     </button>
-    //   </form>
-    // </nav>
-    <nav className="w-100 navbar bg-light">
-      <div>
-        <Link to="/">Home</Link>
-        <Link to="/movies">Movies</Link>
-      </div>
-    </nav>
+    <button type="button" onClick={handleClick}>
+      Go home
+    </button>
   );
+}
+
+class SearchBar extends Component {
+  state = {
+    searchText: ""
+  };
+
+  handleRoute = route => () => {
+    console.log(history);
+    this.props.history.push({ pathname: route });
+  };
+
+  handleSearchInput = event => {
+    this.setState({
+      searchText: event.target.value
+    });
+  };
+
+  handleSearchSubmit = () => {
+    if (this.state.searchText) {
+      this.props.history.push({
+        pathname: "/results",
+        state: {
+          searchText: this.state.searchText
+        }
+      });
+    } else {
+      alert("Please enter some search text!");
+    }
+  };
+
+  render() {
+    return (
+      // <Fragment>
+      //   <form>
+      //     <input
+      //       onChange={this.handleSearchInput}
+      //       value={this.state.searchText}
+      //       type="text"
+      //       placeholder="Search"
+      //       className="mr-sm-2"
+      //     />
+      //     <button onClick={this.handleSearchSubmit} variant="outline-info">
+      //       Search
+      //     </button>
+      //   </form>
+      // </Fragment>
+      <Fragment>
+        <Form inline>
+          <FormControl
+            onChange={this.handleSearchInput}
+            value={this.state.searchText}
+            type="text"
+            placeholder="Search"
+            className="mr-sm-2"
+          />
+          <Button onClick={this.handleSearchSubmit} variant="outline-info">
+            Search
+          </Button>
+        </Form>
+        <HomeButton />
+      </Fragment>
+    );
+  }
 }
 
 export default SearchBar;
