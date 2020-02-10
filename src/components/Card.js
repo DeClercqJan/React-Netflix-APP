@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Card(props) {
   const movieDataLower = props.movieDataLower;
@@ -34,6 +35,7 @@ function Card(props) {
           >
             Go somewhere
           </a>
+          <Link to={`/movies/${movieDataLower.id}`}>test</Link>
         </div>
       </div>
     </article>

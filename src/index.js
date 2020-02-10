@@ -9,7 +9,7 @@ import {
   // Route,
   // Link,
   // useRouteMatch,
-  // useParams
+  // suseParams
 } from "react-router-dom";
 
 ReactDOM.render(

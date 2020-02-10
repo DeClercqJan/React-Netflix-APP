@@ -34,10 +34,18 @@ class App extends React.Component {
     history: PropTypes.object.isRequired
   };
 
+
   render() {
+    const someMethod = () => {
+      // Force a render without state change...
+      this.forceUpdate();
+    }
+
     const handleUrlChangeOnSearch = props => {
+      someMethod();
       console.log("url change in App fires");
-      this.props.history.push('/movies');
+      this.props.history.push("/movies");
+      
     };
 
     const { match, location, history } = this.props;
@@ -83,6 +91,7 @@ function Home(props) {
         `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${query}&page=1&include_adult=false`
       ).then(res => {
         const movies = res.data;
+        console.log(movies);
         setMoviesHigher(movies);
       });
     }
@@ -120,9 +129,7 @@ function Home(props) {
       <main className="row">
         <h2 className="w-100">Movies</h2>
         <Router>
-          <Results
-            MoviesLower={MoviesHigher}
-          />
+          <Results MoviesLower={MoviesHigher} />
         </Router>
       </main>
       <footer>
