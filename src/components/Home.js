@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect, Fragment } from "react";
+import Axios from "axios";
 // import SearchBar from "../components/Search";
 // import Results from "../view/Results";
 // import { BrowserRouter, Route } from "react-router-dom";
@@ -44,7 +45,38 @@ function Home() {
   //   event.preventDefault();
   // };
 
-  return <p>home</p>;
+  const [moviesNowPlaying, setmoviesNowPlaying] = useState(null);
+
+  // if (searchText2 !== "") {
+  const key = "bde60eb3d70191bf80d726a2da4ae238";
+  const FetchData = () => {
+    Axios.get(
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1`
+    ).then(res => {
+      const moviesSearched = res.data;
+      //console.log(moviesSearched.results[0].title);
+      setmoviesNowPlaying(moviesSearched);
+    });
+  };
+  useEffect(() => {
+    FetchData();
+    // [] means it'll only run on first render
+  }, []);
+  // }
+
+  console.log(moviesNowPlaying);
+
+  return (
+    <Fragment>
+      <p>home</p>
+      <br />
+      {moviesNowPlaying ? (
+        <p>{`de titel van de eerste film is ${moviesNowPlaying.results[0].title}`}</p>
+      ) : (
+        "foutje"
+      )}
+    </Fragment>
+  );
 }
 
 export default Home;

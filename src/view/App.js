@@ -68,13 +68,16 @@ function App(props) {
         handleSearchTextHigher={handleSearchTextHigher}
         handleMovieSearchHigher={handleMovieSearchHigher}
         /> */}
-        <BrowserRouter>
-          {/* <SearchBar
+        {/* <SearchBar
             handleSearchText={handleSearchText}
             handleMovieSearch={handleMovieSearch}
           />
           <Route exact path="/" component={Home} />
+          
           <Route path="/movies" component={MoviesList} /> */}
+
+        <BrowserRouter>
+          {/* QUESTION: why does Searchbar need to be in the router? */}
           <SearchBar />
           <Switch>
             <Route exact path="/" component={Home} location={location} />

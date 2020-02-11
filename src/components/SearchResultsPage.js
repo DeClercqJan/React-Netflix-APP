@@ -45,9 +45,9 @@ function SearchResultsPage(props) {
 
   return (
     <Fragment>
-      <p>{searchText2}</p>
+      <p>{searchText2}</p><br/>
       {searchResults ? (
-        <p>{`de titel van de eerste film is ${searchResults.results[0].title}`}</p>
+        <p>{`de titel van de eerste gezochtfilm is ${searchResults.results[0].title}`}</p>
       ) : (
         "je moet eerst searchen"
       )}
