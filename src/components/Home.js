@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react";
 import Axios from "axios";
+import MoviesList from "./Results";
 // import SearchBar from "../components/Search";
 // import Results from "../view/Results";
 // import { BrowserRouter, Route } from "react-router-dom";
@@ -71,7 +72,10 @@ function Home() {
       <p>home</p>
       <br />
       {moviesNowPlaying ? (
-        <p>{`de titel van de eerste film is ${moviesNowPlaying.results[0].title}`}</p>
+        <Fragment>
+          <p>{`de titel van de eerste film is ${moviesNowPlaying.results[0].title}`}</p>
+          <MoviesList moviesList={moviesNowPlaying} />
+        </Fragment>
       ) : (
         "foutje"
       )}

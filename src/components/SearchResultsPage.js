@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 // import ApiData from "../API";
 // import { useLocation, useHistory } from "react-router-dom";
 import Axios from "axios";
+import MoviesList from "./Results";
 
 function SearchResultsPage(props) {
   console.log(props);
@@ -45,9 +46,13 @@ function SearchResultsPage(props) {
 
   return (
     <Fragment>
-      <p>{searchText2}</p><br/>
+      <p>{searchText2}</p>
+      <br />
       {searchResults ? (
-        <p>{`de titel van de eerste gezochtfilm is ${searchResults.results[0].title}`}</p>
+        <Fragment>
+          <p>{`de titel van de eerste gezochtfilm is ${searchResults.results[0].title}`}</p>
+          <MoviesList moviesList={searchResults} />
+        </Fragment>
       ) : (
         "je moet eerst searchen"
       )}

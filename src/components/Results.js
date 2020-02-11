@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Fragment } from "react";
+import Card from "./Card";
 // import Card from "../components/Card";
 // import {
 //   BrowserRouter as Router,
@@ -33,7 +34,8 @@ import React from "react";
 //     return <p>{movieSelected.title}</p>;
 //   };
 
-function MoviesList() {
+function MoviesList(props) {
+  console.log(props);
   //     const MoviesLower = props.MoviesLower;
   //     const moviesListUnformated = MoviesLower.results;
   //     const moviesListFormated = moviesListUnformated.map(movieDataHigher => {
@@ -47,7 +49,12 @@ function MoviesList() {
   //       );
   //     });
   //     return moviesListFormated;
-  return <p>MoviesList</p>;
+  return (
+    <Fragment>
+      <p>MoviesList has been returned</p>
+      <Card movieData={props} />
+    </Fragment>
+  );
 }
 
 //   return (
