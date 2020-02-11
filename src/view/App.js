@@ -1,11 +1,11 @@
 import React from "react";
 // import Navbar from './components/Navbar'
 import { Route, BrowserRouter, Switch } from "react-router-dom";
-import Home from "../components/Home";
+import Home from "./Home";
 // import About from './components/About'
 // import Contact from './components/Contact'
 import SearchBar from "../components/Search";
-import MoviesList from "../components/Results";
+import MoviesList from "./Results";
 // import Axios from "axios";
 import SearchResultsPage from "../components/SearchResultsPage";
 import MovieDetails from "../components/MovieDetails";
@@ -94,8 +94,7 @@ function App(props) {
               path="/searchresultspage"
               render={props => <SearchResultsPage {...props} />}
             />
-            <Route path="/movies/:movieID" 
-            component={MovieDetails} />
+            <Route path="/movies/:movieID" component={MovieDetails} />
           </Switch>
         </BrowserRouter>
       </header>

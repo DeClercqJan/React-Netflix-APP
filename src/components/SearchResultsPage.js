@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 // import ApiData from "../API";
 // import { useLocation, useHistory } from "react-router-dom";
 import Axios from "axios";
-import MoviesList from "./Results";
+import MoviesList from "../view/Results";
 
 function SearchResultsPage(props) {
   console.log(props);
