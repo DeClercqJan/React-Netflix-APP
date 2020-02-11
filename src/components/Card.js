@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Card(props) {
-  // console.log(props);
+  console.log(props);
+  const movieData = props.movieData;
   // const movieDataLower = props.movieDataLower;
   // return (
   //   <article
@@ -41,7 +42,7 @@ function Card(props) {
   //     </div>
   //   </article>
   // );
-  return <p>card has been returned"</p>;
+  return <p>card has been returned for {movieData.title}</p>;
 }
 
 export default Card;

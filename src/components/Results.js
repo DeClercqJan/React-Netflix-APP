@@ -36,23 +36,15 @@ import Card from "./Card";
 
 function MoviesList(props) {
   console.log(props);
-  //     const MoviesLower = props.MoviesLower;
-  //     const moviesListUnformated = MoviesLower.results;
-  //     const moviesListFormated = moviesListUnformated.map(movieDataHigher => {
-  //       return (
-  //         <Fragment>
-  //           <Router>
-  //             <Card movieDataLower={movieDataHigher} />
-  //           </Router>
-  //           {/* <Link to={`/movies/${movieDataHigher.id}`}>{movieDataHigher.id}</Link> */}
-  //         </Fragment>
-  //       );
-  //     });
-  //     return moviesListFormated;
+  const moviesList = props.moviesList;
+  const moviesListUnformated = moviesList.results;
+  const moviesListFormated = moviesListUnformated.map(movieData => {
+    return <Card movieData={movieData} />;
+  });
   return (
     <Fragment>
       <p>MoviesList has been returned</p>
-      <Card movieData={props} />
+      {moviesListFormated}
     </Fragment>
   );
 }
