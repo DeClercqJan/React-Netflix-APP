@@ -8,6 +8,7 @@ import SearchBar from "../components/Search";
 import MoviesList from "../components/Results";
 // import Axios from "axios";
 import SearchResultsPage from "../components/SearchResultsPage";
+import MovieDetails from "../components/MovieDetails";
 
 // class App extends Component {
 // this gets popular movies, yet not sure how this plays out if I use hooks for searches etc.
@@ -88,11 +89,13 @@ function App(props) {
               location={location}
             />
             {/* <Route component={RouteNotFound} /> */}
-            <Route path="/movies" component={MoviesList} />
+            <Route exact path="/movies" component={MoviesList} />
             <Route
               path="/searchresultspage"
               render={props => <SearchResultsPage {...props} />}
             />
+            <Route path="/movies/:movieID" 
+            component={MovieDetails} />
           </Switch>
         </BrowserRouter>
       </header>

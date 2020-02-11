@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
 function Card(props) {
@@ -42,7 +42,12 @@ function Card(props) {
   //     </div>
   //   </article>
   // );
-  return <p>card has been returned for {movieData.title}</p>;
+  return (
+    <Fragment>
+      <p>card has been returned for {movieData.title}</p>
+      <Link to={`/movies/${movieData.id}`}>testlink for details</Link>
+    </Fragment>
+  );
 }
 
 export default Card;
