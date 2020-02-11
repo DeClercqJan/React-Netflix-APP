@@ -4,7 +4,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import Axios from "axios";
 
 function SearchResultsPage(props) {
-  // console.log(props);
+  console.log(props);
   // console.log(props.location);
   // console.log(props.location.search);
   const searchTextRaw = props.location.search;
@@ -14,28 +14,33 @@ function SearchResultsPage(props) {
   // console.log(useLocation);
   // console.log(useHistory);
 
-  const searchText2 = searchTextCleaned;
-  // const [searchText2, setSearchText2] = useState("");
+  // const searchText2 = searchTextCleaned;
+  const [searchText2, setSearchText2] = useState("");
   const [searchResults, setSearchResults] = useState(null);
   console.log(searchResults);
 
-  if (searchText2 !== "") {
-    const key = "bde60eb3d70191bf80d726a2da4ae238";
-    const query = searchText2;
-    const FetchData = () => {
-      Axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${query}&page=1&include_adult=false`
-      ).then(res => {
-        const moviesSearched = res.data;
-        //console.log(moviesSearched.results[0].title);
-        setSearchResults(moviesSearched);
-      });
-    };
-    useEffect(() => {
-      FetchData();
-      // this [] is important to prevent infinit loops
-    }, []);
-  }
+  useEffect(() => {
+    setSearchText2(props.location.search);
+    // console.log("useEffect triggers on change in searchTextRaw");
+  }, [props]);
+
+  // if (searchText2 !== "") {
+  const key = "bde60eb3d70191bf80d726a2da4ae238";
+  const query = searchText2;
+  const FetchData = () => {
+    Axios.get(
+      `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${query}&page=1&include_adult=false`
+    ).then(res => {
+      const moviesSearched = res.data;
+      //console.log(moviesSearched.results[0].title);
+      setSearchResults(moviesSearched);
+    });
+  };
+  useEffect(() => {
+    FetchData();
+    // this [] is important to prevent infinit loops
+  }, [searchText2]);
+  // }
   // event.preventDefault();
 
   return (
