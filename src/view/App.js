@@ -2,7 +2,7 @@ import React from "react";
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 import Home from "./Home";
 import SearchBar from "../components/Search";
-// import MoviesList from "./Results";
+import MoviesList from "./Results";
 import SearchResultsPage from "../components/SearchResultsPage";
 import MovieDetails from "../components/MovieDetails";
 import NavBar from "../components/NavBar";
@@ -19,12 +19,12 @@ function App() {
         <main className="row">
         <Switch>
             <Route exact path="/" component={Home} location={location} />
-            <Route
+            {/* <Route
               exact
               path="/results"
               component={SearchResultsPage}
               location={location}
-            />
+            /> */}
             {/* <Route exact path="/movies" component={MoviesList} /> */}
             <Route
               path="/searchresultspage"
