@@ -37,11 +37,9 @@ function SearchResultsPage(props) {
 
   return (
     <Fragment>
-      <p>{searchText2}</p>
-      <br />
+      <h2 className="w-100">Search results</h2>
       {searchResults ? (
         <Fragment>
-          <p>{`de titel van de eerste gezochtfilm is ${searchResults.results[0].title}`}</p>
           <MoviesList moviesList={searchResults} />
         </Fragment>
       ) : (

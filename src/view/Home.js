@@ -21,15 +21,11 @@ function Home() {
   }, []);
   // }
 
-  console.log(moviesNowPlaying);
-
   return (
     <Fragment>
-      <h2>Home</h2>
-      <br />
+      <h2 className="w-100">Home</h2>
       {moviesNowPlaying ? (
         <Fragment>
-          <p>{`de titel van de eerste film is ${moviesNowPlaying.results[0].title}`}</p>
           <MoviesList moviesList={moviesNowPlaying} />
         </Fragment>
       ) : (

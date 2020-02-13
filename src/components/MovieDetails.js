@@ -54,18 +54,16 @@ const MovieDetails = props => {
   //     return <p>{movieSelected.title}</p>;
   return (
     <Fragment>
-      <p>Moviedetails</p>
-      <p>{movieSelected.title}</p>
-
-            {youTubeTrailerKey ? (
-      <iframe
-      width="1521"
-      height="602"
-      src={`https://www.youtube.com/embed/${youTubeTrailerKey}`}
-      frameborder="0"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    ></iframe>
+      <h2 className="w-100">{movieSelected.title}</h2>
+      {youTubeTrailerKey ? (
+        <iframe
+          width="1521"
+          height="602"
+          src={`https://www.youtube.com/embed/${youTubeTrailerKey}`}
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
       ) : (
         "no trailer in first position of response. Probably a to do for the web developer(me)"
       )}

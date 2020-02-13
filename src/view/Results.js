@@ -43,7 +43,6 @@ function MoviesList(props) {
   });
   return (
     <Fragment>
-      <p>MoviesList has been returned</p>
       {moviesListFormated}
     </Fragment>
   );

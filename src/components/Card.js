@@ -1,52 +1,33 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 function Card(props) {
-  console.log(props);
   const movieData = props.movieData;
-  // const movieDataLower = props.movieDataLower;
-  // return (
-  //   <article
-  //     key={movieDataLower.id}
-  //     className="col-3"
-  //     style={{ height: "40rem" }}
-  //   >
-  //     <div className="card text-center" style={{ height: "90%" }}>
-  //       <div style={{ height: "50%" }}>
-  //         <img
-  //           className="card-img-top"
-  //           style={{ objectFit: "contain" }}
-  //           src={`https://image.tmdb.org/t/p/w500${movieDataLower.poster_path}`}
-  //           alt={movieDataLower.title}
-  //         />
-  //       </div>
-  //       <div className="card-body" style={{ height: "50%" }}>
-  //         <h3 className="card-title" style={{ height: "20%" }}>
-  //           {movieDataLower.title}
-  //         </h3>
-  //         <p
-  //           className="card-text"
-  //           style={{ height: "50%", overflow: "scroll" }}
-  //         >
-  //           {movieDataLower.overview}
-  //         </p>
-  //         <a
-  //           href={`/movies/${movieDataLower.id}`}
-  //           className="btn btn-primary"
-  //           style={{ height: "15%", marginBottom: "15%" }}
-  //         >
-  //           Go somewhere
-  //         </a>
-  //         <Link to={`/movies/${movieDataLower.id}`}>test</Link>
-  //       </div>
-  //     </div>
-  //   </article>
-  // );
   return (
-    <Fragment>
-      <p>card has been returned for {movieData.title}</p>
-      <Link to={`/movies/${movieData.id}`}>testlink for details</Link>
-    </Fragment>
+    <article key={movieData.id} className="col-3" style={{ height: "40rem" }}>
+      <div className="card text-center" style={{ height: "90%" }}>
+        <div style={{ height: "50%" }}>
+          <img
+            className="card-img-top"
+            style={{ objectFit: "contain" }}
+            src={`https://image.tmdb.org/t/p/w500${movieData.poster_path}`}
+            alt={movieData.title}
+          />
+        </div>
+        <div className="card-body" style={{ height: "50%" }}>
+          <h3 className="card-title" style={{ height: "20%" }}>
+            {movieData.title}
+          </h3>
+          <p
+            className="card-text"
+            style={{ height: "50%", overflow: "scroll" }}
+          >
+            {movieData.overview}
+          </p>
+          <Link to={`/movies/${movieData.id}`}>See trailer and details</Link>
+        </div>
+      </div>
+    </article>
   );
 }
 
