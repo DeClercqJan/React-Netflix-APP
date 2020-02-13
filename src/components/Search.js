@@ -29,10 +29,10 @@ function SearchBar() {
   };
 
   const keyPressed = event => {
-  if (event.key === "Enter") {
+    if (event.key === "Enter") {
       event.preventDefault();
-      console.log("test");
-      console.log(event);
+      // console.log("test");
+      // console.log(event);
       handleSearchSubmit();
     }
   };
