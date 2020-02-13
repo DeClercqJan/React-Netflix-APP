@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-//  import { Link } from "react-router-dom";
-// import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
-import { Form, FormControl, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
 function SearchBar() {
@@ -19,8 +17,8 @@ function SearchBar() {
     if (searchText) {
       history.push({
         pathname: "/searchresultspage",
-        // search: `?query=${searchText}`,
         search: searchText,
+        // just a note
         state:
           "just putting something here to illustrate that this can also be done and much more"
       });
@@ -29,36 +27,22 @@ function SearchBar() {
     }
   };
 
-  // to do: clean this up and remove react bootstrap stuff that I don't need
   return (
-    // <Fragment>
-    //   <form>
-    //     <input
-    //       onChange={this.handleSearchInput}
-    //       value={this.state.searchText}
-    //       type="text"
-    //       placeholder="Search"
-    //       className="mr-sm-2"
-    //     />
-    //     <button onClick={this.handleSearchSubmit} variant="outline-info">
-    //       Search
-    //     </button>
-    //   </form>
-    // </Fragment>
-    <Form inline>
-      <FormControl
-        // onChange={this.handleSearchInput}
-        // value={this.state.searchText}
+    <form>
+      <input
         onChange={handleSearchInput}
         value={searchText}
         type="text"
         placeholder="Search"
         className="mr-sm-2"
       />
+      {/* not sure what this React bootstrap element does, but it appears to do
+      more than just style as replacing it with regular button tag kills
+      functionality */}
       <Button onClick={handleSearchSubmit} variant="outline-info">
         Search
       </Button>
-    </Form>
+    </form>
   );
   // }
 }
