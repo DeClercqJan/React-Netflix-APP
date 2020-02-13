@@ -22,19 +22,30 @@ function SearchBar() {
         state:
           "just putting something here to illustrate that this can also be done and much more"
       });
+      setSearchText("");
     } else {
       alert("Please enter some search text!");
     }
   };
 
+  const keyPressed = event => {
+  if (event.key === "Enter") {
+      event.preventDefault();
+      console.log("test");
+      console.log(event);
+      handleSearchSubmit();
+    }
+  };
+
   return (
-    <form>
+    <form onKeyPress={keyPressed}>
       <input
         onChange={handleSearchInput}
         value={searchText}
         type="text"
         placeholder="Search"
         className="mr-sm-2"
+        // onKeyPress={keyPressed}
       />
       {/* not sure what this React bootstrap element does, but it appears to do
       more than just style as replacing it with regular button tag kills

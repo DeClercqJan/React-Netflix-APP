@@ -11,11 +11,11 @@
 - react router
 - history.push for query parameters
 - condtionally displayed certain things and have some errors messages set
+- error boundaries set
 - tried to have clean/readable code
 
 ## to do's
 
-- error boundaries
 - overhaul the whole thing to have a personalised film suggestion with the click of a few buttons based on how I feel (sad, romantic, party ...) and that I haven't seen before
 
 # ORIGINAL ASSIGNMENT BELOW
