@@ -9,25 +9,78 @@ const MovieDetails = props => {
   const [movieSelectedTrailers, setMovieSelectedTrailers] = useState([]);
   // const [count, setCount] = useState(0);
   const [youTubeTrailerKey, setYouTubeTrailerKey] = useState(null);
+  const [movieDetailsApiError, setMovieDetailsApiError] = useState(false);
 
   let { movieID } = useParams();
   const key = "bde60eb3d70191bf80d726a2da4ae238";
-  const fetchDataDetails = async () => {
-    let response = await Axios.get(
+  const fetchDataDetails = () => {
+    Axios.get(
       `https://api.themoviedb.org/3/movie/${movieID};}?api_key=${key}&language=en-US`
-    );
-    let responseData = await response.data;
-    setMovieSelected(responseData);
-    // console.log(responseData);
+    )
+      .then(res => {
+        const responseData = res.data;
+        setMovieSelected(responseData);
+      })
+      .catch(error => {
+        console.log(error);
+        // stole this from https://gist.github.com/fgilio/230ccd514e9381fafa51608fcf137253
+        if (error.response) {
+          /*
+           * The request was made and the server responded with a
+           * status code that falls out of the range of 2xx
+           */
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          /*
+           * The request was made but no response was received, `error.request`
+           * is an instance of XMLHttpRequest in the browser and an instance
+           * of http.ClientRequest in Node.js
+           */
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request and triggered an Error
+          console.log("Error", error.message);
+        }
+        console.log(error.config);
+        setMovieDetailsApiError(true);
+      });
   };
-  const fetchDataTrailers = async () => {
-    let response = await Axios.get(
+  const fetchDataTrailers = () => {
+    Axios.get(
       `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=${key}&language=en-US`
-    );
-    let responseData2 = await response.data;
-    setMovieSelectedTrailers(responseData2);
-    setYouTubeTrailerKey(responseData2.results[0].key);
-    // console.log(responseData2);
+    )
+      .then(res => {
+        const responseData2 = res.data;
+        setMovieSelectedTrailers(responseData2);
+        setYouTubeTrailerKey(responseData2.results[0].key);
+      })
+      .catch(error => {
+        console.log(error);
+        // stole this from https://gist.github.com/fgilio/230ccd514e9381fafa51608fcf137253
+        if (error.response) {
+          /*
+           * The request was made and the server responded with a
+           * status code that falls out of the range of 2xx
+           */
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          /*
+           * The request was made but no response was received, `error.request`
+           * is an instance of XMLHttpRequest in the browser and an instance
+           * of http.ClientRequest in Node.js
+           */
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request and triggered an Error
+          console.log("Error", error.message);
+        }
+        console.log(error.config);
+        setMovieDetailsApiError(true);
+      });
   };
   useEffect(() => {
     fetchDataDetails();
@@ -65,7 +118,16 @@ const MovieDetails = props => {
           allowfullscreen
         ></iframe>
       ) : (
-        "no trailer in first position of response. Probably a to do for the web developer(me)"
+        [
+          // note the comma
+          <p>There has been an error</p>,
+          movieDetailsApiError ? (
+            <p>: there was an error with getting the data from the database.
+              Perhaps there was no YouTube trailer available (in the first
+              positoin of the response). Something to do for the developer (me)
+            </p>
+          ) : null
+        ]
       )}
     </Fragment>
   );

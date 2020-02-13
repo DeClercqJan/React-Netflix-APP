@@ -2,7 +2,7 @@
 
 ## basic idea
 
-- get popular movies on first-load. Get details of movie. Or search other movie and get details one step later
+- get movies now-playing on first-load. Get trailer/details of movie. Or search other movie and get details one step later
 - BeCode React JavaScript challenge
 
 ## implementation
@@ -16,7 +16,6 @@
 ## to do's
 
 - error boundaries
-- embed trailer on details page from google. Probably will be method chaing (https://developers.themoviedb.org/3/movies/get-movie-videos and set as parameter in https://www.youtube.com/watch?v=UcmZN0Mbl04)
 - overhaul the whole thing to have a personalised film suggestion with the click of a few buttons based on how I feel (sad, romantic, party ...) and that I haven't seen before
 
 # ORIGINAL ASSIGNMENT BELOW
