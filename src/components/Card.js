@@ -15,9 +15,10 @@ function Card(props) {
           />
         </div>
         <div className="card-body" style={{ height: "50%" }}>
-          <h3 className="card-title" style={{ height: "20%" }}>
+          <h3 className="card-title" style={{ height: "20%",  overflow: "scroll" }}>
             {movieData.title}
           </h3>
+          <p>vote average: {movieData.vote_average}</p>
           <p
             className="card-text"
             style={{ height: "50%", overflow: "scroll" }}

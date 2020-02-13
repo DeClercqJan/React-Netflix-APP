@@ -41,11 +41,7 @@ function MoviesList(props) {
   const moviesListFormated = moviesListUnformated.map(movieData => {
     return <Card movieData={movieData} />;
   });
-  return (
-    <Fragment>
-      {moviesListFormated}
-    </Fragment>
-  );
+  return <Fragment>{moviesListFormated}</Fragment>;
 }
 
 //   return (

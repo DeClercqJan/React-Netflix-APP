@@ -2,7 +2,7 @@ import React from "react";
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 import Home from "./Home";
 import SearchBar from "../components/Search";
-import MoviesList from "./Results";
+// import MoviesList from "./Results";
 import SearchResultsPage from "../components/SearchResultsPage";
 import MovieDetails from "../components/MovieDetails";
 import NavBar from "../components/NavBar";
@@ -13,11 +13,11 @@ function App() {
       <BrowserRouter>
         <header className="row">
           <h1 className="w-100">React Netflix App</h1>
-          <NavBar/>
+          <NavBar />
           <SearchBar />
         </header>
         <main className="row">
-        <Switch>
+          <Switch>
             <Route exact path="/" component={Home} location={location} />
             {/* <Route
               exact
