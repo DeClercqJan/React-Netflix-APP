@@ -61,15 +61,16 @@ function App(props) {
 
   return (
     <div className="container-fluid">
-      <header className="row">
-        <h1 className="w-100">React Netflix App</h1>
-        {/* <SearchBar
+      <BrowserRouter>
+        <header className="row">
+          <h1 className="w-100">React Netflix App</h1>
+          {/* <SearchBar
         // confusing names? Well, I thought it made most sense to have props.lower as a name for something that is used at that level, while props.functionHigher is something that is moved up
         SearchTextLower={SearchTextHigher}
         handleSearchTextHigher={handleSearchTextHigher}
         handleMovieSearchHigher={handleMovieSearchHigher}
         /> */}
-        {/* <SearchBar
+          {/* <SearchBar
             handleSearchText={handleSearchText}
             handleMovieSearch={handleMovieSearch}
           />
@@ -77,10 +78,11 @@ function App(props) {
           
           <Route path="/movies" component={MoviesList} /> */}
 
-        <BrowserRouter>
           {/* QUESTION: why does Searchbar need to be in the router? */}
           <SearchBar />
-          <Switch>
+        </header>
+        <main className="row">
+        <Switch>
             <Route exact path="/" component={Home} location={location} />
             <Route
               exact
@@ -96,17 +98,15 @@ function App(props) {
             />
             <Route path="/movies/:movieID" component={MovieDetails} />
           </Switch>
-        </BrowserRouter>
-      </header>
-      <main className="row">
-        {/* <h2 className="w-100">Movies</h2>
+          {/* <h2 className="w-100">Movies</h2>
       <Router>
         <Results MoviesLower={MoviesHigher} />
       </Router> */}
-      </main>
-      <footer>
-        <p>footer</p>
-      </footer>
+        </main>
+        <footer>
+          <p>footer</p>
+        </footer>
+      </BrowserRouter>
     </div>
   );
 }
