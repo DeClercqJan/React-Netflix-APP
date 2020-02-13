@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import Axios from "axios";
 import MoviesList from "../view/Results";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 function SearchResultsPage(props) {
   console.log(props);
@@ -64,9 +65,9 @@ function SearchResultsPage(props) {
     <Fragment>
       <h2 className="w-100">Search results</h2>
       {searchResults ? (
-        <Fragment>
+        <ErrorBoundary>
           <MoviesList moviesList={searchResults} />
-        </Fragment>
+        </ErrorBoundary>
       ) : (
         [
           // note the comma

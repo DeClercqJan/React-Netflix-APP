@@ -1,5 +1,7 @@
 import React, { Fragment } from "react";
 import Card from "../components/Card";
+import ErrorBoundary from "../components/ErrorBoundary";
+
 // import Card from "../components/Card";
 // import {
 //   BrowserRouter as Router,
@@ -39,7 +41,11 @@ function MoviesList(props) {
   const moviesList = props.moviesList;
   const moviesListUnformated = moviesList.results;
   const moviesListFormated = moviesListUnformated.map(movieData => {
-    return <Card movieData={movieData} />;
+    return (
+      <ErrorBoundary>
+        <Card movieData={movieData} />
+      </ErrorBoundary>
+    );
   });
   return <Fragment>{moviesListFormated}</Fragment>;
 }

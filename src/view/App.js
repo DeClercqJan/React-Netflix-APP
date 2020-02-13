@@ -6,6 +6,7 @@ import SearchBar from "../components/Search";
 import SearchResultsPage from "../components/SearchResultsPage";
 import MovieDetails from "../components/MovieDetails";
 import NavBar from "../components/NavBar";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 function App() {
   return (
@@ -13,8 +14,12 @@ function App() {
       <BrowserRouter>
         <header className="row">
           <h1 className="w-100">React Netflix App</h1>
-          <NavBar />
-          <SearchBar />
+          <ErrorBoundary>
+            <NavBar />
+          </ErrorBoundary>
+          <ErrorBoundary> 
+            <SearchBar />
+          </ErrorBoundary>
         </header>
         <main className="row">
           <Switch>

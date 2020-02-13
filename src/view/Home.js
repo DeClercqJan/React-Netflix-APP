@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import Axios from "axios";
 import MoviesList from "./Results";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 function Home() {
   const [moviesNowPlaying, setmoviesNowPlaying] = useState(null);
@@ -54,7 +55,9 @@ function Home() {
     <Fragment>
       <h2 className="w-100">Home</h2>
       {moviesNowPlaying ? (
+        <ErrorBoundary>
           <MoviesList moviesList={moviesNowPlaying} />
+        </ErrorBoundary>
       ) : (
         [
           // note the comma
